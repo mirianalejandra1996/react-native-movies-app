@@ -5,7 +5,7 @@ import {
   QueryClientProvider
 } from '@tanstack/react-query'
 
-
+// El Stack es como el outlet de react.
 import { Stack } from 'expo-router'
 import '../global.css'
 
