@@ -1,4 +1,4 @@
-import { Cast } from "@/infrastructure/interfaces/credits.interface";
+import { Cast } from "@/infrastructure/interfaces/moviedb-credits.interface";
 import React from "react";
 import { FlatList, Text, View } from "react-native";
 import { ActorCard } from "./ActorCard";
@@ -9,7 +9,7 @@ interface Props {
 
 const MovieCast = ({ casts }: Props) => {
   return (
-    <View className="mt-5">
+    <View className="mt-5 mb-20">
       <Text className="text-2xl font-bold px-4 mb-2">Actores</Text>
 
       <FlatList

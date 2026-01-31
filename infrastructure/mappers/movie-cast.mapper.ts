@@ -1,8 +1,8 @@
-import { Cast } from "../interfaces/credits.interface";
-import { Cast as CastResponse } from "../interfaces/credits.response";
+import { Cast } from "../interfaces/moviedb-credits.interface";
+import { MovieDBCast } from "../interfaces/moviedb-credits.response";
 
 export class CastMapper {
-  static fromMovieDBCastToEntity(actor: CastResponse): Cast {
+  static fromMovieDBCastToEntity(actor: MovieDBCast): Cast {
     return {
       id: actor.id,
       name: actor.name,

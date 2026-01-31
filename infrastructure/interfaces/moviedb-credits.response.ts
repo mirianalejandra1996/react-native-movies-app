@@ -1,10 +1,10 @@
-export interface CreditsResponse {
+export interface MovieDBCreditsResponse {
   id: number;
-  cast: Cast[];
-  crew: Cast[];
+  cast: MovieDBCast[];
+  crew: MovieDBCast[];
 }
 
-export interface Cast {
+export interface MovieDBCast {
   adult: boolean;
   gender: number;
   id: number;

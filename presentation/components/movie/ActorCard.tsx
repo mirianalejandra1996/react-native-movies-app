@@ -1,4 +1,4 @@
-import { Cast } from "@/infrastructure/interfaces/credits.interface";
+import { Cast } from "@/infrastructure/interfaces/moviedb-credits.interface";
 import { Image, Text, View } from "react-native";
 
 interface Props {

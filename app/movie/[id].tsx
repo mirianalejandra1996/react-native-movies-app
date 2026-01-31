@@ -12,7 +12,7 @@ const MovieScreen = () => {
   // const movie = getMovieByAction(+id);
   const { movieQuery, movieCastQuery } = useMovie(+id);
 
-  if (movieQuery.isLoading || !movieQuery.data || !movieCastQuery.data) {
+  if (movieQuery.isLoading || !movieQuery.data) {
     return (
       <View className="flex flex-1 justify-center items-center">
         <Text className="mb-4">Espere por favor</Text>
@@ -34,7 +34,7 @@ const MovieScreen = () => {
       </View>
 
       <View>
-        <MovieCast casts={movieCastQuery.data} />
+        <MovieCast casts={movieCastQuery?.data || []} />
       </View>
     </ScrollView>
   );

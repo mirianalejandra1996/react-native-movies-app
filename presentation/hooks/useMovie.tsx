@@ -11,7 +11,7 @@ export const useMovie = (id: number) => {
   });
 
   const movieCastQuery = useQuery({
-    queryKey: ["credits", id],
+    queryKey: ["movie", id, "cast"],
     queryFn: () => getMovieCastAction(id),
     staleTime: 1000 * 60 * 60 * 24, // 24 hours
   });
