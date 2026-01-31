@@ -1,19 +1,42 @@
-import { getMovieByAction } from "@/core/actions/movie/get-movie-by-id.action";
+// import { getMovieByAction } from "@/core/actions/movie/get-movie-by-id.action";
+import MovieCast from "@/presentation/components/movie/MovieCast";
+import MovieDescription from "@/presentation/components/movie/MovieDescription";
+import MovieHeader from "@/presentation/components/movie/MovieHeader";
+import { useMovie } from "@/presentation/hooks/useMovie";
 import { useLocalSearchParams } from "expo-router";
-import { Text, View } from "react-native";
+import { ActivityIndicator, ScrollView, Text, View } from "react-native";
 
 const MovieScreen = () => {
   const { id } = useLocalSearchParams();
 
-  const movie = getMovieByAction(+id);
+  // const movie = getMovieByAction(+id);
+  const { movieQuery, movieCastQuery } = useMovie(+id);
 
-  console.log({ movie });
+  if (movieQuery.isLoading || !movieQuery.data || !movieCastQuery.data) {
+    return (
+      <View className="flex flex-1 justify-center items-center">
+        <Text className="mb-4">Espere por favor</Text>
+        <ActivityIndicator color="purple" size={30} />
+      </View>
+    );
+  }
 
   return (
-    <View>
-      <Text>MovieScreen {id}</Text>
-      <Text>MovieScreen {JSON.stringify(movie)}</Text>
-    </View>
+    <ScrollView>
+      <MovieHeader
+        poster={movieQuery.data.poster}
+        originalTitle={movieQuery.data.originalTitle}
+        title={movieQuery.data.title}
+      />
+
+      <View>
+        <MovieDescription movie={movieQuery.data} />
+      </View>
+
+      <View>
+        <MovieCast casts={movieCastQuery.data} />
+      </View>
+    </ScrollView>
   );
 };
 
